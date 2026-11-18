@@ -1,0 +1,20 @@
+{
+  "project_name": "CareerPath AI - O*NET Machine Learning Foundation",
+  "onet_version": "O*NET 31.0 (August 2026 Release)",
+  "data_source": "U.S. Department of Labor / Employment and Training Administration (USDOL/ETA)",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "generation_timestamp": "2026-11-17T18:17:55Z",
+  "random_seed": 42,
+  "record_counts": {
+    "total_rated_occupations": 879,
+    "train_samples": 615,
+    "validation_samples": 132,
+    "test_samples": 132,
+    "num_soc_classes": 22
+  },
+  "best_model": {
+    "name": "Logistic Regression",
+    "test_accuracy": 0.7879,
+    "test_macro_f1": 0.7213
+  }
+}
