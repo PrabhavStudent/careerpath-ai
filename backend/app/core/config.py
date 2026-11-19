@@ -35,6 +35,7 @@ class Settings:
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         "https://careerpath-ai-onet.netlify.app",
+        "https://gorgeous-alpaca-2e444e.netlify.app",
         "*"
     ]
 

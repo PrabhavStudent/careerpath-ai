@@ -5,8 +5,9 @@ const isBrowser = typeof window !== 'undefined';
 const isLocalhost = isBrowser && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
 
 const envUrl = import.meta.env.VITE_API_URL;
-// If user sets VITE_API_URL in Netlify, use it. Otherwise fallback to localhost for local dev.
-const API_BASE_URL = envUrl || (isLocalhost ? 'http://localhost:8000/api/v1' : '/api/v1');
+// Deployed production Render backend URL
+const PRODUCTION_BACKEND_URL = 'https://careerpath-ai-backend-yyax.onrender.com/api/v1';
+const API_BASE_URL = envUrl || (isLocalhost ? 'http://localhost:8000/api/v1' : PRODUCTION_BACKEND_URL);
 
 const api = axios.create({
   baseURL: API_BASE_URL,
