@@ -17,30 +17,35 @@ def register(user_data: UserRegister, db: Session = Depends(get_db)):
             detail="User with this email already exists"
         )
     
-    new_user = User(
-        full_name=user_data.full_name,
-        email=user_data.email,
-        password_hash=get_password_hash(user_data.password)
-    )
-    db.add(new_user)
-    db.commit()
-    db.refresh(new_user)
+    try:
+        new_user = User(
+            full_name=user_data.full_name,
+            email=user_data.email,
+            password_hash=get_password_hash(user_data.password)
+        )
+        db.add(new_user)
+        db.commit()
+        db.refresh(new_user)
 
-    # Create empty student profile
-    profile = StudentProfile(user_id=new_user.id)
-    db.add(profile)
-    db.commit()
+        # Create empty student profile
+        profile = StudentProfile(user_id=new_user.id)
+        db.add(profile)
+        db.commit()
 
-    token = create_access_token({"sub": str(new_user.id), "email": new_user.email})
-    return {
-        "access_token": token,
-        "token_type": "bearer",
-        "user": {
-            "id": new_user.id,
-            "full_name": new_user.full_name,
-            "email": new_user.email
+        token = create_access_token({"sub": str(new_user.id), "email": new_user.email})
+        return {
+            "access_token": token,
+            "token_type": "bearer",
+            "user": {
+                "id": new_user.id,
+                "full_name": new_user.full_name,
+                "email": new_user.email
+            }
         }
-    }
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Registration error: {str(e)}")
 
 @router.post("/login", response_model=TokenResponse)
 def login(credentials: UserLogin, db: Session = Depends(get_db)):

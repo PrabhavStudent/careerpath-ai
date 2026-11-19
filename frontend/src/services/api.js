@@ -10,7 +10,7 @@ const API_BASE_URL = envUrl || (isLocalhost ? 'http://localhost:8000/api/v1' : '
 
 const api = axios.create({
   baseURL: API_BASE_URL,
-  timeout: (!envUrl && !isLocalhost) ? 2000 : 15000,
+  timeout: 15000,
   headers: {
     'Content-Type': 'application/json'
   }

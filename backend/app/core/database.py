@@ -42,7 +42,7 @@ def get_engine():
         logger.info(f"Connecting to SQLite database: {target_url}")
         return create_engine(
             target_url,
-            connect_args={"check_same_thread": False}
+            connect_args={"check_same_thread": False, "timeout": 30}
         )
     
     # 2. Remote PostgreSQL or MySQL Engine (for Render / Cloud)
