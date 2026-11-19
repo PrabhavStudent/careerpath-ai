@@ -38,6 +38,7 @@ class Settings:
         "https://gorgeous-alpaca-2e444e.netlify.app",
         "https://careerpathai.netlify.app",
         "https://careerpath-ai-platform-9eyd.netlify.app",
+        "https://careerpath-ai-official.netlify.app",
         "*"
     ]
 
